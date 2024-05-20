@@ -13,7 +13,7 @@ module "rhcs_cluster_rosa_classic" {
   cluster_name                                     = var.cluster_name
   openshift_version                                = var.openshift_version
   oidc_config_id                                   = var.oidc_config_id
-  aws_subnet_ids                                   = var.aws_subnet_ids
+  aws_subnet_ids                                   = concat(module.vpc.public_subnets, module.vpc.private_subnets)
   aws_additional_infra_security_group_ids          = var.aws_additional_infra_security_group_ids
   aws_additional_control_plane_security_group_ids  = var.aws_additional_control_plane_security_group_ids
   kms_key_arn                                      = var.kms_key_arn
